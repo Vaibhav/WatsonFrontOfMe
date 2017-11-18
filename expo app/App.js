@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { ImagePicker,Speech } from 'expo';
 
 //this line fixes a bug
@@ -11,9 +11,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{color: 'blue'}}></Text>
         <ImagePickerExample/>
-        <WatsonClassify/>
       </View>
     );
   }
@@ -27,13 +25,8 @@ class ImagePickerExample extends React.Component {
   render() {
     let { image } = this.state;
 
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-          title="Pick an image from camera roll"
-          onPress={this._pickImage}
-        />
-        <Button
+/* old return stuff
+         <Button
           title="Take an image with camera"
           onPress={this._takeImage}
         />
@@ -47,8 +40,24 @@ class ImagePickerExample extends React.Component {
           //<Text source={{ uri: image}} />
           }
           <Text>{image}</Text> 
+ 
+ */
+
+
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button
+        title="Take a picture"
+        onPress={this._takeImage}
+      />
       </View>
     );
+    /*
+     <Button
+          title="Pick an image from camera roll"
+          onPress={this._pickImage}
+        />
+    */
   }
 
   _pickImage = async () => {
@@ -171,6 +180,7 @@ function createResponse(returnJSON){
   return outputString;
 }
 
+/*
 class WatsonClassify extends React.Component{
 
 
@@ -178,6 +188,7 @@ class WatsonClassify extends React.Component{
     return (<Text>Aiya wo de ni ta ta grat tsts he te lol godn</Text>);
   }
 }
+*/
 
 async function watsonGet(image_uri){
 
