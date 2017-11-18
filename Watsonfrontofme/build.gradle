@@ -6,12 +6,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0'
-<<<<<<< HEAD
-
-=======
-        // compile "com.android.support:appcompat-v7:27.0.1"
-        // compile 'com.ibm.watson.developer_cloud:android-sdk:0.4.2'
->>>>>>> 9e735b7f78c64b60ef87e31612c748ce1cba634e
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         // compile project(':library-release')
