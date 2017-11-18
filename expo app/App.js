@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
-import { ImagePicker } from 'expo';
+import { ImagePicker,Speech } from 'expo';
 
 
 export default class App extends React.Component {
@@ -33,6 +33,11 @@ class ImagePickerExample extends React.Component {
           title="Take an image with camera"
           onPress={this._takeImage}
         />
+        <Button
+          title="Take an image with cameraaaa"
+          onPress={this._textToSpeech}
+        />
+
         {image &&
           <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
           //<Text source={{ uri: image}} />
@@ -67,9 +72,21 @@ class ImagePickerExample extends React.Component {
       this.setState({ image: result.uri });
 
     }
+    };
     
-
-
+  _textToSpeech = () => {
+    Expo.Speech.speak("Text to speech. We Are Garbage."
+ /*
+      language: this.state.selectedExample.language
+     ,
+      pitch: this.state.pitch,
+      rate: this.state.rate,
+      onStart: start,
+      onDone: complete,
+      onStopped: complete,
+      onError: complete,
+*/
+    );
   };
 }
 
