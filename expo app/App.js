@@ -118,8 +118,7 @@ function createResponse(returnJSON){
     console.log(arr);
     console.log(arr.length);
     console.log(arr[0]);
-    console.log(arr[0].class);
-    console.log(arr[0]["class"]);
+
 
     var arr1 = {}; // new Array(arr.length);
     for (i = 0; i < arr.length; ++i) {
@@ -127,38 +126,46 @@ function createResponse(returnJSON){
     }
 
     console.log(arr1);
-    var top3arr;
-    var top3arrNum;
+    var top3arr = [];
+    var top3arrNum = [];
     var curMax = 0; 
     var curClassString;
+
     for (i in arr1){
       if (arr1[i] > curMax && !top3arr.includes(i)){
         curClassString = i; 
         curMax = arr1[i]; 
       }
     }
+
     top3arr.push(curClassString);
     top3arrNum.push(curMax);
+
      for (i in arr1){
       if (arr1[i] > curMax && !top3arr.includes(i)){
         curClassString = i; 
         curMax = arr1[i]; 
       }
     }
+
     top3arr.push(curClassString, curMax);
     top3arrNum.push(curMax);
     curMax = 0;
+
     for (i in arr1){
       if (arr1[i] > curMax && !top3arr.includes(i)){
         curClassString = i; 
         curMax = arr1[i]; 
       }
     }
+
     top3arr.push(i);
     top3arrNum.push(curMax);
+
     curMax = 0;
   
-  var outputString = "I " + confLevel(top3arrNum[0]) + " that there is a " + top3arr[0] + " and I " + confLevel(top3arrNum[1]) + " that there is a " + top3arr[1] + " and I " + confLevel(top3arrNum[2]) + " that there is a " + top3arr[2] + " infront of you." 
+  var outputString = "I " + confInterval(top3arrNum[0]) + " that there is a " + top3arr[0] + " and I " + confInterval(top3arrNum[1]) + " that there is a " + top3arr[1] + " and I " + confInterval(top3arrNum[2]) + " that there is a " + top3arr[2] + " infront of you." 
+  console.log(outputString);
   return outputString;
 }
 
