@@ -88,6 +88,58 @@ class ImagePickerExample extends React.Component {
 */
     );
   };
+ function confInterval(confLevel){
+  var sureness;
+  if(confLevel >= 0 && confLevel <= 0.49){
+   sureness = "am unsure";
+}else if ( confLevel > 0.49 && confLevel <= 0.79){
+sureness = "believe";
+} else {
+sureness = "am confident";
+}
+return sureness;
+}
+
+  function createResponse(returnJSON){
+    const jsObj = JSON.parse(returnJson);
+    var arr = jsObj.images[0].classifiers[0].classes[0];
+    var arr1 = new Array(arr.length);
+    for (i = 0; i < arr.length; ++i) {
+      arr1[arr[i].class] = arr[i].score; //** 
+    }
+    
+    var top3arr;
+    var top3arrNum;
+    var curMax = 0; 
+    var curClassString;
+    for (i in arr1){
+      if (arr1[i] > curMax && !top3arr.includes(i)){
+        curClassString = i; 
+        curMax = arr1[i]; 
+      }
+    }
+    top3arr.push(curClassString);
+    top3arrNum.push(curMax);
+     for (i in arr1){
+      if (arr1[i] > curMax && !top3arr.includes(i)){
+        curClassString = i; 
+        curMax = arr1[i]; 
+      }
+    }
+    top3arr.push(curClassString, curMax);
+    top3arrNum.push(curMax);
+    curMax = 0;
+    for (i in arr1){
+      if (arr1[i] > curMax && !top3arr.includes(i)){
+        curClassString = i; 
+        curMax = arr1[i]; 
+      }
+    }
+    top3arr.push(i);
+    top3arrNum.push(curMax);
+    curMax = 0;
+  
+  var outputString = "I " + confLevel(top3arrNum[0]) + " that there is a " + top3arr[0] + " and I " + confLevel(top3arrNum[1]) + " that there is a " + top3arr[1] + " and I " + confLevel(top3arrNum[2]) + " that there is a " + top3arr[2] + " infront of you." 
 }
 
 
