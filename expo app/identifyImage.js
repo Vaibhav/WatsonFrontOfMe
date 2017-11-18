@@ -16,5 +16,8 @@ visual_recognition.classify(params, function(err, res) {
   if (err)
     console.log(err);
   else
-    console.log(JSON.stringify(res, null, 2));  
+    console.log(JSON.stringify(res, null, 2));
+    //var x = JSON.parse(res);
+    console.log(res.images[0].classifiers[0].classes[0].class);
+    console.log(Object.keys(res.images[0].classifiers[0].classes).length);  
 });
