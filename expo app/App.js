@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, TouchableOpacity, Vibration } from 'react-native';
 import { ImagePicker,Speech } from 'expo';
 
 //this line fixes a bug
@@ -48,7 +48,8 @@ class ImagePickerExample extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Button
         title="Take a picture"
-        onPress={this._takeImage}
+        onPress={
+          this._takeImage}
       />
       </View>
     );
@@ -74,6 +75,7 @@ class ImagePickerExample extends React.Component {
   };
 
   _takeImage = async () => {
+     Vibration.vibrate();
     let result = await ImagePicker.launchCameraAsync({
       allowsEditing: false,
       aspect: [4, 3]
