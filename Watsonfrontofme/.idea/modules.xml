@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Watsonfrontofme.iml" filepath="$PROJECT_DIR$/Watsonfrontofme.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ibm-library-release/ibm-library-release.iml" filepath="$PROJECT_DIR$/ibm-library-release/ibm-library-release.iml" />
     </modules>
   </component>
 </project>
