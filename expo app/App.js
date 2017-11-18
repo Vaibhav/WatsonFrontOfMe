@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { ImagePicker } from 'expo';
 
+
 export default class App extends React.Component {
   render() {
     return (
@@ -33,7 +34,10 @@ class ImagePickerExample extends React.Component {
           onPress={this._takeImage}
         />
         {image &&
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
+          //<Text source={{ uri: image}} />
+          }
+          <Text>{image}</Text> 
       </View>
     );
   }
@@ -61,7 +65,11 @@ class ImagePickerExample extends React.Component {
 
     if (!result.cancelled) {
       this.setState({ image: result.uri });
+
     }
+    
+
+
   };
 }
 

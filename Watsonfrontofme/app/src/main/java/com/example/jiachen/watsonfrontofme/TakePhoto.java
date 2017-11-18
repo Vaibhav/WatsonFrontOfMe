@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class TakePhoto extends AppCompatActivity {
 
     @Override
@@ -24,7 +25,7 @@ public class TakePhoto extends AppCompatActivity {
     }
 
     //creates a collision proof file name
-    private File createImageFile() throws IOException{
+    private File createImageFile() throws IOException {
         // create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
