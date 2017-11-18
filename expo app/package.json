@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "expo": "^22.0.0",
+    "now": "^8.5.1",
     "react": "^16.0.0-beta.5",
     "react-native": "https://github.com/expo/react-native/archive/sdk-22.0.2.tar.gz",
     "watson-developer-cloud": "^2.42.0"
