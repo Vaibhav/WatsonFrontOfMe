@@ -116,9 +116,6 @@ function createResponse(returnJSON){
     // var returnJSON = JSON.parse(returnJson);
     var arr = returnJSON; //images[0].classifiers[0].classes[0];
     console.log(arr);
-    console.log(arr.length);
-    console.log(arr[0]);
-
 
     var arr1 = {}; // new Array(arr.length);
     for (i = 0; i < arr.length; ++i) {
@@ -149,7 +146,7 @@ function createResponse(returnJSON){
       }
     }
 
-    
+
     top3arr.push(curClassString);
     top3arrNum.push(curMax);
     curMax = 0;
