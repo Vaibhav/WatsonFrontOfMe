@@ -140,6 +140,7 @@ function createResponse(returnJSON){
 
     top3arr.push(curClassString);
     top3arrNum.push(curMax);
+    curMax = 0;
 
      for (i in arr1){
       if (arr1[i] > curMax && !top3arr.includes(i)){
@@ -148,7 +149,8 @@ function createResponse(returnJSON){
       }
     }
 
-    top3arr.push(curClassString, curMax);
+    
+    top3arr.push(curClassString);
     top3arrNum.push(curMax);
     curMax = 0;
 
@@ -159,8 +161,11 @@ function createResponse(returnJSON){
       }
     }
 
-    top3arr.push(i);
+    top3arr.push(curClassString);
     top3arrNum.push(curMax);
+
+    console.log(top3arr);
+    console.log(top3arrNum);
 
     curMax = 0;
   
