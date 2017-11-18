@@ -248,7 +248,7 @@ export default class App extends React.Component {
 }
 
 async function uploadImageAsync(uri) {
-  let apiUrl = 'https://file-upload-example-backend-ilkasvygdx.now.sh/upload';  
+  let apiUrl = 'https://api.imgur.com/3/upload'; //'https://file-upload-example-backend-ilkasvygdx.now.sh/upload';  
 
   // Note:
   // Uncomment this if you want to experiment with local server
