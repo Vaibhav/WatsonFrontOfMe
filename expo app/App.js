@@ -74,7 +74,8 @@ class ImagePickerExample extends React.Component {
 
     //console.log(result);
     let watsonResult = await watsonGet(resultURI);
-    console.log(watsonResult);
+    console.log(JSON.stringify(watsonResult));
+    Expo.Speech.speak(createResponse(watsonResult));
     //THIS IS THE JSON THAT IS RETURNED
 
     if (!result.cancelled) {
@@ -97,7 +98,9 @@ class ImagePickerExample extends React.Component {
 */
     );
   };
- function confInterval(confLevel){
+}
+
+function confInterval(confLevel){
   var sureness;
   if(confLevel >= 0 && confLevel <= 0.49){
    sureness = "am unsure";
@@ -109,14 +112,21 @@ sureness = "am confident";
 return sureness;
 }
 
-  function createResponse(returnJSON){
-    const jsObj = JSON.parse(returnJson);
-    var arr = jsObj.images[0].classifiers[0].classes[0];
-    var arr1 = new Array(arr.length);
+function createResponse(returnJSON){
+    // var returnJSON = JSON.parse(returnJson);
+    var arr = returnJSON; //images[0].classifiers[0].classes[0];
+    console.log(arr);
+    console.log(arr.length);
+    console.log(arr[0]);
+    console.log(arr[0].class);
+    console.log(arr[0]["class"]);
+
+    var arr1 = {}; // new Array(arr.length);
     for (i = 0; i < arr.length; ++i) {
-      arr1[arr[i].class] = arr[i].score; //** 
+      arr1[String(arr[i].class)] = arr[i].score;
     }
-    
+
+    console.log(arr1);
     var top3arr;
     var top3arrNum;
     var curMax = 0; 
@@ -149,6 +159,7 @@ return sureness;
     curMax = 0;
   
   var outputString = "I " + confLevel(top3arrNum[0]) + " that there is a " + top3arr[0] + " and I " + confLevel(top3arrNum[1]) + " that there is a " + top3arr[1] + " and I " + confLevel(top3arrNum[2]) + " that there is a " + top3arr[2] + " infront of you." 
+  return outputString;
 }
 
 class WatsonClassify extends React.Component{
