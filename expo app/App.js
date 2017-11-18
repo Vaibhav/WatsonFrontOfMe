@@ -2,14 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
 import { ImagePicker,Speech } from 'expo';
 
+//this line fixes a bug
+let RCTLog = require('RCTLog');
+
+let API_KEY = '8d7aced8efa9ce11cca985d203dce5989cc20148';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{color: 'blue'}}>Hello</Text>
-
+        <Text style={{color: 'blue'}}></Text>
         <ImagePickerExample/>
+        <WatsonClassify/>
       </View>
     );
   }
@@ -63,10 +67,15 @@ class ImagePickerExample extends React.Component {
   _takeImage = async () => {
     let result = await ImagePicker.launchCameraAsync({
       allowsEditing: false,
-      aspect: [4, 3],
+      aspect: [4, 3]
     });
 
-    console.log(result);
+    let resultURI = await result.uri;
+
+    //console.log(result);
+    let watsonResult = await watsonGet(resultURI);
+    console.log(watsonResult);
+    //THIS IS THE JSON THAT IS RETURNED
 
     if (!result.cancelled) {
       this.setState({ image: result.uri });
@@ -88,6 +97,49 @@ class ImagePickerExample extends React.Component {
 */
     );
   };
+}
+
+class WatsonClassify extends React.Component{
+
+
+  render() {
+    return (<Text>Aiya wo de ni ta ta grat tsts he te lol godn</Text>);
+  }
+}
+
+async function watsonGet(image_uri){
+
+  console.log("Image is " + image_uri);
+
+  let photo = { 
+    uri: image_uri, 
+    name: 'image.jpg', 
+    type: 'image/jpg'
+  }
+  let formdata = new FormData();
+  formdata.append('images_file', photo);
+
+  let data = await fetch('https://watson-api-explorer.mybluemix.net/visual-recognition/api/v3/classify?api_key=8d7aced8efa9ce11cca985d203dce5989cc20148&version=2016-05-20', 
+  {
+    method: 'post',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      'Accept' : 'application/json',
+      'Accept-Language' : 'en'
+    },
+    body: formdata
+  }).then(response => {
+    //console.log(response);
+    return response;
+  }).catch(err => {
+    console.log(err);
+  })
+
+  //return text_response;
+  //console.log(data);
+  let actual_response = await data.json();
+  //console.log(actual_response);
+  return actual_response.images[0].classifiers[0].classes;
 }
 
 
