@@ -46,7 +46,10 @@ class ImagePickerExample extends React.Component {
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
+        <Image
+          source={require('./assets/logo.png')}
+        />
+        <Button style={styles.button}
         title="Take a picture"
         onPress={
           this._takeImage}
@@ -231,8 +234,12 @@ async function watsonGet(image_uri){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#afeeee',
+    justifyContent: 'flex-end',
+  },
+  button:
+  {
+    flex: 1,
+    justifyContent: 'flex-end',
   },
 });
