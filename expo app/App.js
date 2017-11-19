@@ -84,7 +84,7 @@ class ImagePickerExample extends React.Component {
     //console.log(result);
     let watsonResult = await watsonGet(resultURI);
     console.log(JSON.stringify(watsonResult));
-    Expo.Speech.speak(createResponse(watsonResult));
+    Expo.Speech.speak(createResponse(watsonResult), {language: en_uk});
     //THIS IS THE JSON THAT IS RETURNED
 
     if (!result.cancelled) {
@@ -128,7 +128,9 @@ function createResponse(returnJSON){
 
     var arr1 = {}; // new Array(arr.length);
     for (i = 0; i < arr.length; ++i) {
-      arr1[String(arr[i].class)] = arr[i].score;
+      var name = String(arr[i].class);
+      if (name.indexOf("color") >= 0){ continue; }
+      arr1[name] = arr[i].score;
     }
 
     console.log(arr1);
@@ -175,7 +177,13 @@ function createResponse(returnJSON){
 
     curMax = 0;
   
-  var outputString = "I " + confInterval(top3arrNum[0]) + " that there is a " + top3arr[0] + " and I " + confInterval(top3arrNum[1]) + " that there is a " + top3arr[1] + " and I " + confInterval(top3arrNum[2]) + " that there is a " + top3arr[2] + " infront of you." 
+  var outputString = "I " + 
+  confInterval(top3arrNum[0]) + 
+  " that there is a " + top3arr[0] + 
+  " it could also be a " + top3arr[1] + " or a" +   
+  top3arr[2] + " infront of you."
+  
+  
   console.log(outputString);
   return outputString;
 }
