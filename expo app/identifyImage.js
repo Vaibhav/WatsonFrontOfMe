@@ -9,7 +9,8 @@ var visual_recognition = watson.visual_recognition({
 
 
 var params = {
-  images_file: fs.createReadStream('./testset/banana.jpg')
+  images_file: fs.createReadStream('./testset/banana.jpg'),
+  classifier_ids: ['banana_607335887', 'default'] 
 };
 
 visual_recognition.classify(params, function(err, res) {
