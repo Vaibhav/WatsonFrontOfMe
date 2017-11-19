@@ -182,12 +182,23 @@ function createResponse(returnJSON){
 
     curMax = 0;
   
-  var outputString = "I " + 
+  var outputString ="";
+  var runningString ="";
+  
+  
+  runningString = "I " + confInterval(top3arrNum[0]) + " that there is a " + top3arr[0];  
+  if(top3arrNum.length > 1){ 
+  runningString += " it could also be a " + top3arr[1]; }
+  if (top3arrNum.length > 2){
+    runningString += " or a " +  top3arr[2] + " in front of you.";
+  }
+  
+  outputString = runningString;
+  /*var outputString = "I " + 
   confInterval(top3arrNum[0]) + 
   " that there is a " + top3arr[0] + 
   " it could also be a " + top3arr[1] + " or a " +   
-  top3arr[2] + " in front of you."
-  
+  top3arr[2] + " in front of you."*/
   
   console.log(outputString);
   return outputString;
