@@ -185,8 +185,8 @@ function createResponse(returnJSON){
   var outputString = "I " + 
   confInterval(top3arrNum[0]) + 
   " that there is a " + top3arr[0] + 
-  " it could also be a " + top3arr[1] + " or a" +   
-  top3arr[2] + " infront of you."
+  " it could also be a " + top3arr[1] + " or a " +   
+  top3arr[2] + " in front of you."
   
   
   console.log(outputString);
