@@ -139,42 +139,43 @@ function createResponse(returnJSON){
     }
 
     console.log(arr1);
-    var top3arr = [];
+    let top3arr = new Set();
+    // var top3arr = [];
     var top3arrNum = [];
     var curMax = 0; 
     var curClassString;
 
     for (i in arr1){
-      if (arr1[i] > curMax && !top3arr.includes(i)){
+      if (arr1[i] > curMax && !top3arr.has(i)){
         curClassString = i; 
         curMax = arr1[i]; 
       }
     }
 
-    top3arr.push(curClassString);
+    top3arr.add(curClassString);
     top3arrNum.push(curMax);
     curMax = 0;
 
      for (i in arr1){
-      if (arr1[i] > curMax && !top3arr.includes(i)){
+      if (arr1[i] > curMax && !top3arr.has(i)){
         curClassString = i; 
         curMax = arr1[i]; 
       }
     }
 
 
-    top3arr.push(curClassString);
+    top3arr.add(curClassString);
     top3arrNum.push(curMax);
     curMax = 0;
 
     for (i in arr1){
-      if (arr1[i] > curMax && !top3arr.includes(i)){
+      if (arr1[i] > curMax && !top3arr.has(i)){
         curClassString = i; 
         curMax = arr1[i]; 
       }
     }
 
-    top3arr.push(curClassString);
+    top3arr.add(curClassString);
     top3arrNum.push(curMax);
 
     console.log(top3arr);
@@ -186,11 +187,21 @@ function createResponse(returnJSON){
   var runningString ="";
   
   
-  runningString = "I " + confInterval(top3arrNum[0]) + " that there is a " + top3arr[0];  
-  if(top3arrNum.length > 1){ 
-  runningString += " it could also be a " + top3arr[1]; }
-  if (top3arrNum.length > 2){
-    runningString += " or a " +  top3arr[2] + " in front of you.";
+  //get iterator:
+  var it = top3arr.values();
+  //get first entry:
+  var first = it.next();
+  //get value out of the iterator entry:
+  var value = first.value;
+  console.log(value); //1
+
+  runningString = "I " + confInterval(top3arrNum[0]) + " that there is a " + first.value; 
+  first = it.next(); 
+  if(top3arrNum.length > 1 && first.value){ 
+  runningString += " it could also be a " + first.value; }
+  first = it.next();
+  if (top3arrNum.length > 2 && first.vlaue){
+    runningString += " or a " +  first.value + " in front of you.";
   }
   
   outputString = runningString;
