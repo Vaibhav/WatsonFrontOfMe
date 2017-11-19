@@ -47,7 +47,7 @@ class ImagePickerExample extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Image
-          source={require('./assets/logo.png')}
+          source={require('./assets/logo2.png')}
         />
         <Button style={styles.button}
         title="Take a picture"
