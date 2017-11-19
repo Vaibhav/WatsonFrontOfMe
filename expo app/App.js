@@ -86,7 +86,7 @@ class ImagePickerExample extends React.Component {
     //console.log(result);
     let watsonResult = await watsonGet(resultURI);
     console.log(JSON.stringify(watsonResult));
-    Expo.Speech.speak(createResponse(watsonResult), {language: en_uk});
+    Expo.Speech.speak(createResponse(watsonResult));
     //THIS IS THE JSON THAT IS RETURNED
 
     if (!result.cancelled) {
